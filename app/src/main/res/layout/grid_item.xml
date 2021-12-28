@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+
+
+    <TextView
+        android:id="@+id/volume_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1GB"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textColor="#4E4D4D"
+
+
+        />
+
+    <TextView
+        android:id="@+id/validity_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1 Month"
+        android:textSize="17sp"
+        app:layout_constraintTop_toBottomOf="@+id/volume_tv"
+        android:textColor="#4E4D4D"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/price_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="399 tk"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#4E4D4D"
+        app:layout_constraintTop_toBottomOf="@+id/validity_tv"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        style="@style/buttonStyle_small"
+        android:layout_width="wrap_content"
+        android:layout_height="31dp"
+        android:text="Buy Pack"
+
+        app:layout_constraintTop_toBottomOf="@+id/price_tv" />
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.unitel" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo_unitel"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo_unitel"
+        android:supportsRtl="true"
+        android:theme="@style/NoActionBarOwn2" >
+        <activity
+            android:name=".TestActivity"/>
+        <activity
+            android:name=".DashBoardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BuyNewSimActivity"
+            android:exported="true" />
+        <activity android:name=".SimReplaceActivity" />
+        <activity android:name=".BuyNetPackActivity" />
+        <activity android:name=".RechargeActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

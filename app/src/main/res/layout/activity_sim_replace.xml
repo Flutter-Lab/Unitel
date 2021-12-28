@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_sub_activity"
+    android:paddingHorizontal="35dp"
+    tools:context=".BuyNewSimActivity">
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@raw/logo_unitel_small_1"
+        style="@style/sub_Activity_Logo" />
+
+    <TextView
+        android:id="@+id/headingTextView"
+        android:text="SIM Replacement"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoImageView"
+        style="@style/subActivity_heading_txtView" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/headingTextView"
+        tools:layout_editor_absoluteX="35dp">
+
+        <EditText
+            android:id="@+id/amountEditText"
+            android:hint="Full Name"
+            style="@style/sample_input_1" />
+        <EditText
+            android:id="@+id/fatherNameEditText"
+            android:hint="Mobile Number"
+            style="@style/sample_input_1" />
+
+        <EditText
+            android:id="@+id/nidEditText"
+            android:hint="NID Number"
+            style="@style/sample_input_1" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buySimOrderButton"
+        style="@style/buttonStyle1"
+        android:layout_gravity="center_horizontal"
+        android:text="Submit Order"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="70dp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
