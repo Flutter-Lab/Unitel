@@ -14,7 +14,7 @@
     <item
         android:id="@+id/nav_bundle"
         android:icon="@drawable/ic_bundle"
-        android:title="Bundle"/>
+        android:title="Voice"/>
 
 
 </menu>

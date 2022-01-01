@@ -32,13 +32,24 @@ public class LoginFragment extends Fragment {
         phoneNumberEditText = view.findViewById(R.id.phnNumberEditText);
         loginButton = view.findViewById(R.id.loginButton);
 
+
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String phoneNo = phoneNumberEditText.getText().toString();
 
+
+
+
+
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putString("PhoneNumber", phoneNo).apply();
+
+
+
+
+
 
                 Intent intent = new Intent(getContext(), DashBoardActivity.class);
                 startActivity(intent);

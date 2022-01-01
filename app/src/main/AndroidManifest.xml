@@ -20,7 +20,6 @@
             android:name=".BuyNewSimActivity"
             android:exported="true" />
         <activity android:name=".SimReplaceActivity" />
-        <activity android:name=".BuyNetPackActivity" />
         <activity android:name=".RechargeActivity" />
         <activity
             android:name=".MainActivity"

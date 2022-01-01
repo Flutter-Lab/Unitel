@@ -107,7 +107,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="399 tk"
+                    android:text="20 tk"
                     android:textColor="#150236"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -115,6 +115,7 @@
                     tools:layout_editor_absoluteX="0dp" />
 
                 <Button
+                    android:id="@+id/vp_button1"
                     style="@style/buttonStyle_small"
                     android:layout_width="wrap_content"
                     android:layout_height="31dp"
@@ -164,7 +165,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="59 tk"
+                    android:text="35 tk"
                     android:textColor="#150236"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -172,6 +173,7 @@
                     tools:layout_editor_absoluteX="0dp" />
 
                 <Button
+                    android:id="@+id/vp_button2"
                     style="@style/buttonStyle_small"
                     android:layout_width="wrap_content"
                     android:layout_height="31dp"
@@ -222,7 +224,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="169 tk"
+                    android:text="50 tk"
                     android:textColor="#150236"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -230,6 +232,7 @@
                     tools:layout_editor_absoluteX="0dp" />
 
                 <Button
+                    android:id="@+id/vp_button3"
                     style="@style/buttonStyle_small"
                     android:layout_width="wrap_content"
                     android:layout_height="31dp"
@@ -279,7 +282,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="139 tk"
+                    android:text="75 tk"
                     android:textColor="#150236"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -287,6 +290,7 @@
                     tools:layout_editor_absoluteX="0dp" />
 
                 <Button
+                    android:id="@+id/vp_button4"
                     style="@style/buttonStyle_small"
                     android:layout_width="wrap_content"
                     android:layout_height="31dp"
@@ -337,7 +341,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="399 tk"
+                    android:text="100 tk"
                     android:textColor="#150236"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -345,6 +349,7 @@
                     tools:layout_editor_absoluteX="0dp" />
 
                 <Button
+                    android:id="@+id/vp_button5"
                     style="@style/buttonStyle_small"
                     android:layout_width="wrap_content"
                     android:layout_height="31dp"
@@ -394,7 +399,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="209 tk"
+                    android:text="120 tk"
                     android:textColor="#150236"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -402,6 +407,7 @@
                     tools:layout_editor_absoluteX="0dp" />
 
                 <Button
+                    android:id="@+id/vp_button6"
                     style="@style/buttonStyle_small"
                     android:layout_width="wrap_content"
                     android:layout_height="31dp"
@@ -452,7 +458,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="279 tk"
+                    android:text="160 tk"
                     android:textColor="#150236"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -460,6 +466,7 @@
                     tools:layout_editor_absoluteX="0dp" />
 
                 <Button
+                    android:id="@+id/vp_button7"
                     style="@style/buttonStyle_small"
                     android:layout_width="wrap_content"
                     android:layout_height="31dp"
@@ -509,7 +516,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="409 tk"
+                    android:text="200 tk"
                     android:textColor="#150236"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -517,6 +524,7 @@
                     tools:layout_editor_absoluteX="0dp" />
 
                 <Button
+                    android:id="@+id/vp_button8"
                     style="@style/buttonStyle_small"
                     android:layout_width="wrap_content"
                     android:layout_height="31dp"
@@ -567,7 +575,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="549 tk"
+                    android:text="270 tk"
                     android:textColor="#150236"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -575,6 +583,7 @@
                     tools:layout_editor_absoluteX="0dp" />
 
                 <Button
+                    android:id="@+id/vp_button9"
                     style="@style/buttonStyle_small"
                     android:layout_width="wrap_content"
                     android:layout_height="31dp"
@@ -624,7 +633,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="699 tk"
+                    android:text="250 tk"
                     android:textColor="#150236"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -632,6 +641,7 @@
                     tools:layout_editor_absoluteX="0dp" />
 
                 <Button
+                    android:id="@+id/vp_button10"
                     style="@style/buttonStyle_small"
                     android:layout_width="wrap_content"
                     android:layout_height="31dp"

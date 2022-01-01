@@ -2,7 +2,9 @@ package com.example.unitel;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,11 +29,12 @@ import io.realm.mongodb.mongo.MongoCollection;
 import io.realm.mongodb.mongo.MongoDatabase;
 
 public class RechargeActivity extends AppCompatActivity implements View.OnClickListener {
-    String appId = "unitel-app-ofugf";
+
     EditText rechargeAmountEditText;
     Button bkashButton, nagadButton, rocketButton, continueButton;
     TextView selectedTextView;
 
+    String appId = "unitel-app-ofugf";
     MongoDatabase mongoDatabase;
     MongoClient mongoClient;
     User user;
@@ -58,13 +62,12 @@ public class RechargeActivity extends AppCompatActivity implements View.OnClickL
         selectedTextView = findViewById(R.id.selectedPMTextView);
 
 
-        phoneNumber = sharedPref.getString("PhoneNumber", "0000");
+        phoneNumber = sharedPref.getString("PhoneNumber", "0");
 
 
 
         //Initializing MongoDB Realm
         Realm.init(this);
-
         //Creating app/instance on MongoDB
         App app = new App(new AppConfiguration.Builder(appId).build());
 
@@ -93,39 +96,66 @@ public class RechargeActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.rcContinueButton:
-
                 String amount = rechargeAmountEditText.getText().toString();
-                int inputAmount = Integer.parseInt(amount);
-                if (amount != null){
+                String paymentMethod = selectedTextView.getText().toString();
 
-                    Document queryFilter = new Document().append("MobileNumber", phoneNumber );
+                AlertDialog dialog = new AlertDialog.Builder(this)
+                        .setTitle("Confirm Recharge")
+                        .setMessage("Amount: "+amount +" tk"+"\n"+ "Payment Method: "+paymentMethod)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //Log.i(TAG, "onClick: Data Pack Purchased");
+                                float inputAmount = Float.parseFloat(amount);
+                                if (amount != null){
 
-                    mongoCollection2.findOne(queryFilter).getAsync(result -> {
-                        if (result.isSuccess()){
-                            Document resultData = result.get();
-                            Document simPack = (Document) resultData.get("simPackage");
-                            int amountInt = Integer.parseInt(simPack.getString("Balance"));
-                            String finalAmount = String.valueOf((amountInt + inputAmount));
-                            simPack.append("Balance", finalAmount);
-                            
-                            mongoCollection2.updateOne(queryFilter, resultData).getAsync(result1 -> {
-                                if (result1.isSuccess()){
-                                    Log.i(TAG, "onClick: Balance Added Successfully!");
-                                    Intent intent = new Intent(this, DashBoardActivity.class);
-                                    startActivity(intent);
-                                } else {
-                                    Log.i(TAG, "onClick: Something wrong in update");
+                                    Document queryFilter = new Document().append("MobileNumber", phoneNumber );
+
+                                    mongoCollection2.findOne(queryFilter).getAsync(result -> {
+                                        if (result.isSuccess()){
+                                            Document resultData = result.get();
+                                            Document simPack = (Document) resultData.get("simPackage");
+                                            float amountFloat = Float.parseFloat(simPack.getString("Balance"));
+                                            String finalAmount = String.valueOf((amountFloat + inputAmount));
+                                            simPack.append("Balance", finalAmount);
+
+                                            mongoCollection2.updateOne(queryFilter, resultData).getAsync(result1 -> {
+                                                if (result1.isSuccess()){
+                                                    Log.i(TAG, "onClick: Balance Added Successfully!");
+                                                    Intent intent = new Intent(getApplicationContext(), DashBoardActivity.class);
+                                                    startActivity(intent);
+                                                } else {
+                                                    Log.i(TAG, "onClick: Something wrong in update");
+                                                }
+                                            });
+
+
+                                        }
+                                    });
+
+
                                 }
-                            });
+                                Toast.makeText(getApplicationContext(), "Recharge Successful", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNegativeButton("Cancel", null)
+                        .show();
 
-                            
-                        }
-                    });
+                break;
 
 
 
 
-                }
+            case R.id.bkashButton:
+                selectedTextView.setText("Bkash");
+                break;
+            case R.id.nagadButton:
+                selectedTextView.setText("Nagad");
+                break;
+
+            case R.id.rocketButton:
+                selectedTextView.setText("Rocket");
+                break;
         }
 
 

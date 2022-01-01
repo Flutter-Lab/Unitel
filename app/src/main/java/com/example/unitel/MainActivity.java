@@ -5,7 +5,9 @@ import static android.content.ContentValues.TAG;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,8 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     String appId = "unitel-app-ofugf";
 
-    //Button buyNewSim,  loginButton;
-    //Button simReplace, buyNetPack, recharge, buyVoicePacek;
+
 
 
     @Override
@@ -31,9 +32,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        SharedPreferences sharedPref = this.getSharedPreferences("MyPref", Context.MODE_PRIVATE);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.linearLayout_container,
-                new WelcomeFragment()).commit();
+        String phoneNumber = sharedPref.getString("PhoneNumber", "0");
+
+        int phoneInt = Integer.parseInt(phoneNumber);
+
+        if (phoneInt<10000){
+            getSupportFragmentManager().beginTransaction().replace(R.id.linearLayout_container,
+                    new WelcomeFragment()).commit();
+        } else {
+            Intent intent = new Intent(this, DashBoardActivity.class);
+            startActivity(intent);
+        }
+
 
         //Initializing MongoDB Realm
         Realm.init(this);

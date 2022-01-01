@@ -12,8 +12,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.unitel.BuyNewSimActivity;
+import com.example.unitel.MainActivity;
 import com.example.unitel.R;
 import com.example.unitel.RechargeActivity;
+import com.example.unitel.SimReplaceActivity;
+import com.example.unitel.WelcomeFragment;
 
 import org.bson.Document;
 
@@ -39,7 +44,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     MongoCollection<Document> mongoCollection1, mongoCollection2;
 
     TextView nametextView, balanceTextView, dataTextView, talkTimeTextView, smsTextView;
-    Button seeInfoButton, rechargeButton, simReplaceButton, buySimButton, buyTalktimeButton;
+    Button rechargeButton, simReplaceButton, buySimButton, buyTalktimeButton, logoutButton;
+    SharedPreferences sharedPref;
 
 
 
@@ -48,12 +54,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        SharedPreferences sharedPref = getActivity().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        sharedPref = getActivity().getSharedPreferences("MyPref", Context.MODE_PRIVATE);
 
 
         balanceTextView = view.findViewById(R.id.balanceTextView);
         nametextView = view.findViewById(R.id.nameTextView);
-        seeInfoButton = view.findViewById(R.id.seeInfoButton);
+        //seeInfoButton = view.findViewById(R.id.seeInfoButton);
         dataTextView = view.findViewById(R.id.data_internet_tv);
         talkTimeTextView = view.findViewById(R.id.data_minute_tv);
         smsTextView = view.findViewById(R.id.data_sms_tv);
@@ -67,10 +73,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         buyTalktimeButton = view.findViewById(R.id.buyTalkTimeButton);
         buyTalktimeButton.setOnClickListener(this);
 
+        logoutButton = view.findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener(this);
 
 
 
-        String phoneNumber = sharedPref.getString("PhoneNumber", "0000");
+
+        String phoneNumber = sharedPref.getString("PhoneNumber", "0");
 
 
         //Initializing MongoDB Realm
@@ -167,7 +176,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         mongoCollection1.findOne(queryFilter).getAsync(result -> {
             if (result.isSuccess()){
-                Toast.makeText(getActivity(), "Data Found", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Data Found", Toast.LENGTH_SHORT).show();
                 Document resultData = result.get();
                 String fName = resultData.getString("FirstName");
                 String lName = resultData.getString("LastName");
@@ -180,14 +189,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         mongoCollection2.findOne(queryFilter).getAsync(result -> {
             if (result.isSuccess()){
-                Toast.makeText(getActivity(), "SIM Data Found", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "SIM Data Found", Toast.LENGTH_SHORT).show();
                 Document resultData = result.get();
                 Document simPack = (Document) resultData.get("simPackage");
                 String balance = simPack.getString("Balance");
                 String dataBalance = simPack.getString("DataPack");
                 String talkTime = simPack.getString("Talk_Time");
                 String smsPack = simPack.getString("SMS_Pack");
-                balanceTextView.setText(balance);
+                //int balanceI = (int) Float.parseFloat(simPack.getString("Balance"));
+                String b = String.valueOf((int) Float.parseFloat(simPack.getString("Balance")));
+                balanceTextView.setText(b);
                 dataTextView.setText(dataBalance+" MB");
                 talkTimeTextView.setText(talkTime + " Min");
                 smsTextView.setText(smsPack + " SMS");
@@ -204,6 +215,26 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             case R.id.rechargeNowButton:
                 Intent intent = new Intent(getActivity(), RechargeActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.buyNewSIMButton:
+                Intent intent2 = new Intent(getActivity(), BuyNewSimActivity.class);
+                startActivity(intent2);
+                break;
+            case R.id.buyTalkTimeButton:
+                getFragmentManager().beginTransaction().replace(R.id.dashboard_fragment_container,
+                        new BuyVoicePackFragment()).commit();
+                break;
+            case R.id.simReplaceButton:
+                Intent intent3 = new Intent(getActivity(), SimReplaceActivity.class);
+                startActivity(intent3);
+                break;
+            case R.id.logoutButton:
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("PhoneNumber", "0").apply();
+                Intent intent4 = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent4);
+
+
         }
 
     }
