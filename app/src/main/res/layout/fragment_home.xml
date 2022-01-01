@@ -347,19 +347,20 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/logoutButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Log Out"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:backgroundTint="#4B5533"
-            android:layout_gravity="end"
-            />
-
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:backgroundTint="#4B5533"
+        android:text="Log Out"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
