@@ -171,9 +171,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void getUserBalanceData(String phoneNumber){
-
         Document queryFilter = new Document().append("MobileNumber", phoneNumber );
-
         mongoCollection1.findOne(queryFilter).getAsync(result -> {
             if (result.isSuccess()){
                 //Toast.makeText(getActivity(), "Data Found", Toast.LENGTH_SHORT).show();

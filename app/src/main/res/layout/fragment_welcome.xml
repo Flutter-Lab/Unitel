@@ -44,7 +44,7 @@
 
 
         <Button
-            android:id="@+id/buy_new_sim"
+            android:id="@+id/buy_new_sim_wc"
             style="@style/buttonStyle1"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="220dp"

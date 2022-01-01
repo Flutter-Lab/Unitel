@@ -1,5 +1,6 @@
 package com.example.unitel;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -21,7 +22,7 @@ public class WelcomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_welcome, container, false);
 
         loginOptionButton = view.findViewById(R.id.log_in);
-        buyNewSimButton = view.findViewById(R.id.buy_new_sim);
+        buyNewSimButton = view.findViewById(R.id.buy_new_sim_wc);
 
 
 
@@ -31,6 +32,14 @@ public class WelcomeFragment extends Fragment {
 
                 getFragmentManager().beginTransaction().replace(R.id.linearLayout_container,
                         new LoginFragment()).commit();
+            }
+        });
+
+        buyNewSimButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(getActivity(), BuyNewSimActivity.class);
+                startActivity(intent2);
             }
         });
 
